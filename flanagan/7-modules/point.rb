@@ -27,3 +27,23 @@ puts p.inspect
 
 p = Point.new(2, 2)
 puts "{#{p.x}, #{p.y}}"
+
+class MutablePoint
+  def initialize(x, y); @x, @y = x, y; end
+
+  def x; @x; end
+  def y; @y; end
+
+  def x=(value)
+    @x = value
+  end
+
+  def y=(value)
+    @y = value
+  end
+end
+
+p = MutablePoint.new(1, 1)
+p.x = 0
+p.y = 0
+puts p.inspect
