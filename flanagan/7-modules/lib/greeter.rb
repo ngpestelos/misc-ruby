@@ -1,8 +1,10 @@
-class WorldGreeter
+class AbstractGreeter
   def greet
     puts "#{greeting} #{who}"
   end
+end
 
+class WorldGreeter < AbstractGreeter
   def greeting
     "Hello"
   end
