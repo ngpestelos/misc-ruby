@@ -20,6 +20,16 @@ class Point
   def *(scalar)
     Point.new(@x * scalar, @y * scalar)
   end
+
+  def [](index)
+    case index
+    when 0, -2 then @x
+    when 1, -1 then  @y
+    when :x, "x" then  @x
+    when :y, "y" then @y
+    else nil
+    end
+  end
 end
 
 p = Point.new
@@ -50,3 +60,6 @@ puts p.inspect
 p1 = Point.new(1, 1)
 p2 = Point.new(1, 1)
 puts (p1 + p2).inspect
+
+p = Point.new(1, 3)
+puts "#{p[:x]}, #{p[1]}"
