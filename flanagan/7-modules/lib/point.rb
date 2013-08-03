@@ -1,5 +1,6 @@
 class Point
   include Enumerable
+  include Comparable
   attr_reader :x, :y
 
   def initialize(x=0, y=0)
@@ -44,6 +45,11 @@ class Point
       false
     end
   end
+
+  def <=>(o)
+    return nil unless o.instance_of? Point
+    @x**2 + @y**2 <=> o.x**2 + o.y**2 # compare magnitude
+  end
 end
 
 p = Point.new
@@ -86,3 +92,8 @@ p1 = Point.new(1, 1)
 p2 = Point.new(2, 3)
 puts "p1 == p2 ? #{p1 == p2}"
 puts "p1 == p1 ? #{p1 == p1}"
+
+p,q = Point.new(1, 0), Point.new(0, 1)
+puts "p == q ? #{p == q}"
+puts "p < q ? #{p < q}"
+puts "p > q ? #{p > q}"
