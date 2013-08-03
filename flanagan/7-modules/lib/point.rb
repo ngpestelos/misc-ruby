@@ -1,4 +1,5 @@
 class Point
+  include Enumerable
   attr_reader :x, :y
 
   def initialize(x=0, y=0)
@@ -29,6 +30,11 @@ class Point
     when :y, "y" then @y
     else nil
     end
+  end
+
+  def each
+    yield @x
+    yield @y
   end
 end
 
@@ -63,3 +69,7 @@ puts (p1 + p2).inspect
 
 p = Point.new(1, 3)
 puts "#{p[:x]}, #{p[1]}"
+
+p = Point.new
+puts "#{p.each { |x| print x }}"
+puts "At the origin? #{p.all? { |x| x == 0 }}"
