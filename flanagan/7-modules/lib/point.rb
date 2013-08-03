@@ -8,6 +8,18 @@ class Point
   def to_s
     "{#@x, #@y}"
   end
+
+  def +(other)
+    Point.new(@x + other.x, @y + other.y)
+  end
+
+  def -@
+    Point.new(-@x, -@y)
+  end
+
+  def *(scalar)
+    Point.new(@x * scalar, @y * scalar)
+  end
 end
 
 p = Point.new
@@ -34,3 +46,7 @@ p = MutablePoint.new(1, 1)
 p.x = 3
 p.y = 3
 puts p.inspect
+
+p1 = Point.new(1, 1)
+p2 = Point.new(1, 1)
+puts (p1 + p2).inspect
