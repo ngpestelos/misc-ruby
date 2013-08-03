@@ -1,4 +1,8 @@
 class Point
+  @n = 0
+  @totalX = 0
+  @totalY = 0
+
   include Enumerable
   include Comparable
   attr_reader :x, :y
@@ -11,6 +15,24 @@ class Point
 
   def initialize(x=0, y=0)
     @x, @y = x, y
+  end
+
+  def self.new(x=0, y=0)
+    @n += 1
+    @totalX += x
+    @totalY += y
+
+    super
+  end
+
+  def self.report
+    puts "Number of points created: #@n"
+    puts "Average X coordinate: #{@totalX.to_f / @n}"
+    puts "Average Y coordinate: #{@totalY.to_f / @n}"
+  end
+
+  class << self
+    attr_accessor :n, :totalX, :totalY
   end
 
   ORIGIN = Point.new(0, 0)
@@ -113,3 +135,7 @@ puts "p > q ? #{p > q}"
 puts "#{Point.sum(Point.new(1, 1), Point.new(2, 2), Point.new(3, 3))}"
 
 puts Point::UNIT_X + Point::UNIT_Y
+
+puts "\n"
+puts Point.report
+puts "#{Point.n}" # using the class << self trick
