@@ -13,6 +13,12 @@ class Point
     @x, @y = x, y
   end
 
+  ORIGIN = Point.new(0, 0)
+  UNIT_X = Point.new(1, 0)
+  UNIT_Y = Point.new(0, 1)
+  NEGATIVE_UNIT_X = Point.new(-1, 0)
+  NEGATIVE_UNIT_Y = Point.new(0, -1)
+
   def to_s
     "{#@x, #@y}"
   end
@@ -105,3 +111,5 @@ puts "p < q ? #{p < q}"
 puts "p > q ? #{p > q}"
 
 puts "#{Point.sum(Point.new(1, 1), Point.new(2, 2), Point.new(3, 3))}"
+
+puts Point::UNIT_X + Point::UNIT_Y
