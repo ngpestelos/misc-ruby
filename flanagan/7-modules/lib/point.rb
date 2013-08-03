@@ -36,6 +36,14 @@ class Point
     yield @x
     yield @y
   end
+
+  def ==(o)
+    if o.is_a? Point
+      @x == o.x && @y == o.y
+    else
+      false
+    end
+  end
 end
 
 p = Point.new
@@ -73,3 +81,8 @@ puts "#{p[:x]}, #{p[1]}"
 p = Point.new
 puts "#{p.each { |x| print x }}"
 puts "At the origin? #{p.all? { |x| x == 0 }}"
+
+p1 = Point.new(1, 1)
+p2 = Point.new(2, 3)
+puts "p1 == p2 ? #{p1 == p2}"
+puts "p1 == p1 ? #{p1 == p1}"
