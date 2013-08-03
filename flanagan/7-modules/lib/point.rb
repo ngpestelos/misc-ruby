@@ -3,6 +3,12 @@ class Point
   include Comparable
   attr_reader :x, :y
 
+  def Point.sum(*points)
+    x = y = 0
+    points.each { |p| x += p.x; y += p.y }
+    Point.new(x, y)
+  end
+
   def initialize(x=0, y=0)
     @x, @y = x, y
   end
@@ -97,3 +103,5 @@ p,q = Point.new(1, 0), Point.new(0, 1)
 puts "p == q ? #{p == q}"
 puts "p < q ? #{p < q}"
 puts "p > q ? #{p > q}"
+
+puts "#{Point.sum(Point.new(1, 1), Point.new(2, 2), Point.new(3, 3))}"
